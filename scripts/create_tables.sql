@@ -105,6 +105,8 @@ CREATE TABLE IF NOT EXISTS algorithm_knowledge (
     updated_at TIMESTAMPTZ DEFAULT now()
 );
 
+CREATE UNIQUE INDEX IF NOT EXISTS idx_ak_topic_rule ON algorithm_knowledge(topic, rule);
+
 -- Trends table
 CREATE TABLE IF NOT EXISTS trends (
     id SERIAL PRIMARY KEY,

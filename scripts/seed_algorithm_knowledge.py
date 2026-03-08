@@ -100,7 +100,7 @@ def seed():
     for rule in RULES:
         rule["last_verified"] = now
         rule["is_current"] = True
-        db.table("algorithm_knowledge").insert(rule).execute()
+        db.table("algorithm_knowledge").upsert(rule, on_conflict="topic,rule").execute()
     print(f"Seeded {len(RULES)} algorithm rules.")
 
 
